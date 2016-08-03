@@ -23,10 +23,10 @@ import ajax from 'reqwest';
 	});
 
 	function readDate(data){
-		let newArray = data
-			.trim()
-			.split('\n')
-			.map(line => line.split('\t'))
+		const newArray = data
+			.trim() // Trim line breaks/space at the beginning and end of string
+			.split('\n') // Split, method on string object, on new line into array
+			.map(line => line.split('\t')) // Map each line and create new arrays. Separated values with split tab
 			.reduce((customers, line) => {
 				customers[line[0]] = customers[line[0]] || [];
 				customers[line[0]].push({
