@@ -12,6 +12,9 @@ import webpack from 'webpack';
 import ModernizrWebpackPlugin from 'modernizr-webpack-plugin';
 
 const webpackConfig = {
+	entry: {
+		main: 'scripts/main.js',
+	},
 	module: {
 		preLoaders: [
 			{
