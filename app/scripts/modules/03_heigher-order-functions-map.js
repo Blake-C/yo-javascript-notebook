@@ -10,7 +10,7 @@
 		{ name: 'Harold',		species: 'fish' },
 		{ name: 'Ursula',		species: 'cat' },
 		{ name: 'Jimmy',		species: 'fish' }
-	]
+	];
 
 	let names = [];
 
@@ -35,7 +35,7 @@
 		{ name: 'Harold',		species: 'fish' },
 		{ name: 'Ursula',		species: 'cat' },
 		{ name: 'Jimmy',		species: 'fish' }
-	]
+	];
 
 	/**
 	 * ES6

@@ -9,7 +9,7 @@
 		{ amount: 100 },
 		{ amount: 325 },
 		{ amount: 234 }
-	]
+	];
 
 	let total_amount = 0;
 
@@ -33,7 +33,7 @@
 		{ amount: 100 },
 		{ amount: 325 },
 		{ amount: 234 }
-	]
+	];
 
 	/**
 	 * ES6
