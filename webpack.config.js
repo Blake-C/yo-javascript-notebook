@@ -10,38 +10,47 @@
 import path from 'path';
 import webpack from 'webpack';
 import ModernizrWebpackPlugin from 'modernizr-webpack-plugin';
+import validaate from 'webpack-validator';
 
-const webpackConfig = {
+const webpackConfig = validaate({
+	context: path.resolve(__dirname, './app/'),
 	entry: {
-		main: 'scripts/main.js',
+		main: './scripts/main.js',
 	},
-	module: {
-		preLoaders: [
-			{
-				test: /\.js?$/,
-				loader: 'eslint',
-				exclude: /(node_modules|bower_components)/,
-			}
-		],
-		loaders: [
-			{
-				test: /\.js?$/,
-				exclude: /(node_modules|bower_components)/,
-				loader: 'babel',
-				query: {
-					presets: ['es2015']
-				}
-			}
-		]
+	output: {
+		filename: 'bundle.[name].js'
 	},
-	ecmaFeatures: {
-		'jsx': true,
-		'modules': true
-	},
+	devtool: 'cheap-module-eval-source-map',
 	eslint: {
 		failOnWarning: false,
 		failOnError: true
 	},
+
+	/**
+	 * Modules
+	 *
+	 */
+	module: {
+		preLoaders: [
+			{
+				test: /\.jsx?$/,
+				loader: 'eslint-loader',
+				exclude: /(node_modules|bower_components')/
+			}
+		],
+		loaders: [
+			{
+				test: /\.jsx?$/,
+				loader: 'babel',
+				exclude: /(node_modules|bower_components)/
+			}
+		]
+	},
+
+	/**
+	 * Plugins
+	 *
+	 */
 	plugins: [
 		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.OccurenceOrderPlugin(),
@@ -51,7 +60,7 @@ const webpackConfig = {
 			}
 		}),
 		new ModernizrWebpackPlugin({
-			filename: 'modernizr.js',
+			filename: 'bundle.modernizr.js',
 			minify: {
 				output: {
 					comments: false,
@@ -68,15 +77,7 @@ const webpackConfig = {
 				'setClasses'
 			]
 		})
-	],
-	target: 'web',
-	resolve: {
-		root: path.resolve('./app'),
-	},
-	output: {
-		filename: '[name].js'
-	},
-	devtool: 'eval-cheap-module-source-map'
-}
+	]
+})
 
 export default webpackConfig;
