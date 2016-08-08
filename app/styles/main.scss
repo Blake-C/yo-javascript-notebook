@@ -1,5 +1,6 @@
-// bower:scss
-// endbower
+@import '../../node_modules/foundation-sites/scss/foundation';
+
+@include foundation-everything($flex: false);
 
 body {
   background: #fafafa;
